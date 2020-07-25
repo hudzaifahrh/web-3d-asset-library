@@ -1,0 +1,5 @@
+<form action="/products" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <a href="/download/<%= product.path %>" class="btndwn">Download</a>
+    <input type="hidden" name="productId" value="<%= product._id %>">
+</form>

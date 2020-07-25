@@ -1,0 +1,52 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <h1>Edit Object</h1>
+        <hr>
+        <% if (prods.length > 0) { %>
+            <table class="table">
+                <thead>
+                    <th>TITLE</th>
+                    <th>FILE SIZE</th>
+                    <th>FILE TYPE</th>
+                    <th>CONVERT TO GLTF</th>
+                    <th>DELETE</th>
+                </thead>
+                <% for (let product of prods) { %>
+                <tbody>
+                    <tr>
+                        <td data-label="TITLE"><%= product.title %></td>
+                        <td data-label="FILE SIZE"><%= product.fileSize %> B</td>
+                        <td data-label="FILE TYPE"><%= product.fileType %></td>
+                        <td data-label="CONVERT TO GLTF">
+                            <form action="/admin/convert-product" method="POST" id="<%= product._id %>">
+                                <input type="hidden" value="<%= product._id %>" name="productId">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="btn" type="submit" value="<%= product._id %>">Convert</button>
+                            </form>
+                        </td>
+                        <td data-label="DELETE">
+                            <form action="/admin/delete-product" method="POST" id="<%= product._id %>">
+                                <input type="hidden" value="<%= product._id %>" name="productId">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="btn" type="submit" value="<%= product._id %>">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+                <% } %>
+            </table>
+            <div class="danger">
+                <p><strong>Notes!</strong></p>
+                <p>To convert 3D Objects to GLTF format, you have to click "Convert" on OBJ format</p>
+            </div>
+        <% } else { %>
+            <h1>No Object Found!</h1>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>

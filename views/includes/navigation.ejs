@@ -1,0 +1,109 @@
+<div class="backdrop"></div>
+<header class="main-header">
+    <div class="logo"><a href="/"><img class="logo" src="/logo/logo_putih.png" /></a></div>
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+            <li class="main-header__item">
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+            </li>
+            <li class="main-header__item">
+                <div class="dropdown">
+                    <button class="dropbtn">Library</button>
+                    <div class="dropdown-content">
+                        <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">3D Library</a>
+                        <a class="<%= path === '/pamerans' ? 'active' : '' %>" href="/pamerans">Property</a>
+                    </div>
+                  </div>
+            </li>
+            <% if (isAuthenticated) { %>
+                <li class="main-header__item">
+                    <div class="dropdown">
+                        <button class="dropbtn">Upload</button>
+                        <div class="dropdown-content">
+                            <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Object
+                            </a>
+                            <a class="<%= path === '/admin/add-pameran' ? 'active' : '' %>" href="/admin/add-pameran">Add Property
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="main-header__item">
+                    <div class="dropdown">
+                        <button class="dropbtn">Admin</button>
+                        <div class="dropdown-content">
+                            <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Object
+                            </a>
+                            <a class="<%= path === '/admin/pamerans' ? 'active' : '' %>" href="/admin/pamerans">Admin Property
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+        <ul class="main-header__item-list">
+            <% if (!isAuthenticated) { %>
+                <li class="main-header__item">
+                    <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Sign Up</a>
+                </li>
+            <% } else { %>
+                <li class="main-header__item">
+                    <form action="/logout" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+    <button id="side-menu-toggle">Menu</button>
+</header>
+
+<nav class="mobile-nav">
+    <ul class="mobile-nav__item-list">
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">3D Library</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/pamerans' ? 'active' : '' %>" href="/pamerans">Property</a>
+        </li>
+        <% if (isAuthenticated) { %>
+            <li class="mobile-nav__item">
+                <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Object
+                </a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Object
+                </a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="<%= path === '/admin/add-pameran' ? 'active' : '' %>" href="/admin/add-pameran">Add Property
+                </a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="<%= path === '/admin/pamerans' ? 'active' : '' %>" href="/admin/pamerans">Admin Property
+                </a>
+            </li>
+        <% } %>
+        <% if (!isAuthenticated) { %>
+            <li class="mobile-nav__item">
+                <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Sign Up</a>
+            </li>
+        <% } else { %>
+            <li class="mobile-nav__item">
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        <% } %>
+    </ul>
+</nav>

@@ -1,0 +1,37 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <h1>3D Library</h1>
+        <hr>
+        <% if (prods.length > 0) { %>
+            <table class="table">
+                <thead>
+                    <th>TITLE</th>
+                    <th>FILE SIZE</th>
+                    <th>FILE TYPE</th>
+                    <th>DOWNLOAD</th>
+                    <th>VIEW</th>
+                </thead>
+                <% for (let product of prods) { %>
+                <tbody>
+                    <tr>
+                        <td data-label="TITLE"><%= product.title %></td>
+                        <td data-label="FILE SIZE"><%= product.fileSize %> B</td>
+                        <td data-label="FILE TYPE"><%= product.fileType %></td>
+                        <td data-label="DOWNLOAD"><a href="/download/<%= product.path %>" class="btn">Download</a></td>
+                        <td data-label="VIEW"><a href="/products/<%= product._id %>" class="btn">View</a></td>
+                    </tr>
+                </tbody>
+                <% } %>
+            </table>
+        <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
+        <% } else { %>
+            <h1>No Products Found!</h1>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>

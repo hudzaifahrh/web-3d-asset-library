@@ -1,0 +1,25 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <div style="padding-left: 3%; padding-right: 3%; text-align: justify;">
+            <center><img src="/logo/logo biru.png" width="350px"></center>
+            <hr>
+            <h3><b>The flow of this website is as follows:</b></h3>
+            <ol>
+              <li>If you’re already on this website, you can only do <b>Download</b> and <b>View</b> on the Library page only, because the access rights to upload files are limited only to users who have registered. Now, if you want to upload a file, click the <b>Login</b> menu if it is already registered, if not, click <b>Sign Up</b> to register.</li>
+              <li>Enter your data and after it's done, please login with the username and password that you registered.</li>
+              <li>After successfully logging in, you can try to <b>Upload</b>, <b>Download</b>, <b>View</b>, <b>Convert to GLTF</b>, and <b>Delete</b> uploaded files.</li>
+              <li>To upload 3D Object, please click on the <b>Add Object</b> in Upload menu above, select the file you want to upload. If you have selected the file, just click the <b>Add Object</b> button. Don't forget to upload the view in the <b>View</b> section.</li>
+              <li>To upload Property for Exihibition, please click on the <b>Add Property</b> in Upload menu above, select the file you want to upload. If you have selected the file, just click the <b>Add Property</b> button. Don't forget to upload the Poster in the <b>Poster</b> section.</li>
+              <li>Wait until the upload process is completed.</li>
+              <li>If you want to delete the uploaded file, Click the <b>Admin Object</b> or <b>Admin Property</b> in Admin menu above, then select the file you wish to delete.</li>
+              <li>If you want to convert 3D Object to GLTF format, Click the <b>Convert</b> in Admin Object, then select the OBJ format of 3D Object you wish to convert</li>
+              <li>When you’re done, your files are stored in the database and can be see in the <b>3D Object</b> and <b>Property</b> in Library menu above.</li>
+            </ol>
+        </div>
+    </main>
+<%- include('../includes/end.ejs') %>

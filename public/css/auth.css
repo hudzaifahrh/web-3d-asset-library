@@ -1,0 +1,18 @@
+.login-form {
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+    display: block;
+}
+
+.reset:link, 
+.reset:visited {
+    color: indigo;
+    text-decoration: none;
+    padding-left: 3%;
+}
+  
+.reset:hover {
+    color: black;
+    text-decoration: none;
+}

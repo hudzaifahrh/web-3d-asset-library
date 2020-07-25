@@ -1,0 +1,31 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="centered">
+        <h1>View</h1>
+        <hr>
+        <div class="image">
+            <img src="/<%= product.pathImage %>" alt="<%= product.originalname %>">
+        </div>
+        <hr>
+        <table class="table">
+            <thead>
+                <th>TITLE</th>
+                <th>ORIGINAL NAME</th>
+                <th>FILE SIZE</th>
+                <th>FILE TYPE</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="TITLE"><%= product.title %></td>
+                    <td data-label="ORIGINAL NAME"><%= product.originalname %></td>
+                    <td data-label="FILE SIZE"><%= product.fileSize %> B</td>
+                    <td data-label="FILE TYPE"><%= product.fileType %></td>
+                </tr>
+            </tbody>
+        </table>
+            <%- include('../includes/download-btn.ejs', {product: product}) %>
+    </main>
+<%- include('../includes/end.ejs') %>

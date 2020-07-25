@@ -1,0 +1,40 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <h1>Edit Property</h1>
+        <hr>
+        <% if (pamers.length > 0) { %>
+            <table class="table">
+                <thead>
+                    <th>TITLE</th>
+                    <th>FILE SIZE</th>
+                    <th>FILE TYPE</th>
+                    <th>DELETE</th>
+                </thead>
+                <% for (let pameran of pamers) { %>
+                <tbody>
+                    <tr>
+                        <td data-label="TITLE"><%= pameran.title %></td>
+                        <td data-label="FILE SIZE"><%= pameran.fileSize %> B</td>
+                        <td data-label="FILE TYPE"><%= pameran.fileType %></td>
+                        <td data-label="DELETE">
+                            <form action="/admin/delete-pameran" method="POST" id="<%= pameran._id %>">
+                                <input type="hidden" value="<%= pameran._id %>" name="pameranId">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="btn" type="submit" value="<%= pameran._id %>">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+                <% } %>
+            </table>
+        <% } else { %>
+            <h1>No Property Found!</h1>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>
